@@ -128,3 +128,31 @@ h1,h2,h3,.price,.stats b,.steps b,.slide p{font-family:'Roboto',system-ui,sans-s
 /* About photo: image fills the rounded box, emoji only shows if the photo is missing */
 .about-art{position:relative;overflow:hidden}
 .about-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:24px}
+
+/* =========================================================
+   Mobile header: logo + "Menu" button, dropdown panel
+   ========================================================= */
+.menu-contact{display:none}
+@media (max-width:900px){
+  .topbar{display:none}
+  .nav{height:72px}
+  .logo-img{width:52px;height:52px}
+  .menu-btn{display:inline-flex;align-items:center;gap:8px;margin-left:auto;background:var(--navy);color:#fff;border:1px solid #1d3b63;border-radius:10px;padding:11px 22px;font:600 16px/1 'Roboto',system-ui,sans-serif;cursor:pointer;transition:background .2s}
+  .menu-btn:hover{background:var(--navy-2)}
+  .menu-btn::after{content:"▾";font-size:12px;transition:transform .25s}
+  .menu-btn[aria-expanded="true"]::after{transform:rotate(180deg)}
+
+  .menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;margin:0;padding:6px 5% 24px;background:#fff;border-top:1px solid var(--line);box-shadow:0 26px 44px rgba(3,19,41,.2);max-height:calc(100vh - 72px);overflow-y:auto}
+  .menu.open{display:flex;animation:menuIn .25s ease}
+  .menu li{border-bottom:1px solid var(--line)}
+  .menu>li:not(.menu-contact)>a:not(.btn){display:block;padding:16px 4px;font-size:18px;font-weight:500;border-bottom:0!important}
+  .menu li:has(.btn){border-bottom:0;padding-top:18px}
+  .menu .btn{display:block;text-align:center;padding:16px;font-size:16px}
+  .menu-contact{display:block;border-bottom:0!important;padding-top:20px;font-size:14px;line-height:2;color:var(--muted)}
+  .menu-contact>a{color:var(--ink)}
+  .menu-contact .social{margin-top:10px}
+  .menu-contact .social a{background:var(--navy);color:#fff}
+
+  .hero{padding-top:64px}
+}
+@keyframes menuIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
