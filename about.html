@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About | HEART India</title>
+<meta name="description" content="Learn about HEART's holistic, community-led and sustainable approach to uplifting tribal communities in Odisha.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=6">
+
+<!-- Key Point section styles (also work if style.css doesn't have them yet) -->
+<style>
+.kf-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
+.accent-line{display:block;width:44px;height:3px;background:var(--green);margin-bottom:14px}
+.bar-row{margin-top:22px}
+.bar-row span{display:block;margin-bottom:6px;font-size:18px;color:var(--ink)}
+.bar-track{height:14px;background:#e9e6df;border-radius:999px;overflow:hidden}
+.bar-fill{height:100%;width:0;background:var(--green);border-radius:999px;transition:width 1.2s ease}
+.bar-fill.in{width:var(--w)}
+.kf-photo{position:relative;display:grid;place-items:center;aspect-ratio:4/3;border-radius:6px;overflow:hidden;font-size:90px;background:linear-gradient(145deg,var(--green),#3d8a5a)}
+.kf-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@media (max-width:900px){.kf-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main>
+
+  <!-- PAGE TITLE -->
+  <section class="page-hero">
+    <div class="wrap">
+      <h1>About</h1>
+      <p class="crumbs"><a href="index.html">Home</a> » About</p>
+    </div>
+  </section>
+
+  <!-- KEY POINT (skill bars + photo) -->
+  <section class="section">
+    <div class="wrap kf-grid">
+      <div>
+        <span class="accent-line"></span>
+        <h2>Key Point</h2>
+        <p style="color:var(--muted)">Our features reflect the innovative approaches and dedication we bring to community development.</p>
+        <div class="bar-row"><span>Holistic Approach</span><div class="bar-track"><div class="bar-fill" style="--w:89%"></div></div></div>
+        <div class="bar-row"><span>Community-Led Initiatives</span><div class="bar-track"><div class="bar-fill" style="--w:75%"></div></div></div>
+        <div class="bar-row"><span>Sustainable Practices</span><div class="bar-track"><div class="bar-fill" style="--w:93%"></div></div></div>
+      </div>
+      <!-- Put your photo at images/about.jpg -->
+      <div class="kf-photo"><span aria-hidden="true">🌿</span><img src="images/key_point.png" alt="HEART team working with the community" onerror="this.remove()"></div>
+    </div>
+  </section>
+
+  <!-- KEY FEATURES (list) -->
+  <section class="section alt">
+    <div class="wrap two">
+      <!-- Replace with a real pto: <img src="images/about.jpg" alt="HEART team with the community"> -->
+      <div class="about-art" aria-hidden="true" style="max-width:380px;justify-self:center">🌿</div>
+      <div>
+        <h2>Key Features</h2>
+        <p style="color:var(--muted)">Our features reflect the innovative approaches and dedication we bring to community development.</p>
+        <ul class="ticks" style="margin-bottom:26px">
+          <li>We adopt a holistic approach addressing multiple aspects of life, ensuring comprehensive support.</li>
+          <li>Our programs are designed with active participation from community members, ensuring their needs and insights shape our efforts.</li>
+          <li>We prioritize sustainability in all our initiatives, focusing on long-term viability and local resource management.</li>
+          <li>We collaborate with local, national, and international partners to maximize our reach and effectiveness.</li>
+        </ul>
+        <a href="services.html" class="btn">Discover More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE CARDS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="values" style="margin-top:0">
+        <article class="card"><span class="ico">🌍</span><h3>Holistic Approach</h3><p>We adopt a holistic approach addressing multiple aspects of life, ensuring comprehensive support.</p></article>
+        <article class="card"><span class="ico">🤝</span><h3>Community-Led Initiatives</h3><p>Our programs are designed with active participation from community members, ensuring their needs and insights shape our efforts.</p></article>
+        <article class="card"><span class="ico">🌱</span><h3>Sustainable Practices</h3><p>We prioritize sustainability in all our initiatives, focusing on long-term viability and local resource management.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section alt">
+    <div class="wrap">
+      <p class="eyebrow center">Testimonials</p>
+      <h2 class="center">What Our Clients Say</h2>
+      <div class="slider">
+        <!-- Replace these with real quotes and names (with permission) -->
+        <blockquote class="slide active"><p>“HEART’s programs have significantly improved our health and well-being. We feel empowered!”</p>John Smith · Community Leader</blockquote>
+        <blockquote class="slide"><p>“The educational support provided has opened up new avenues for our children.”</p>Kane Rods · Concerned Parent</blockquote>
+        <blockquote class="slide"><p>“Our agricultural yields have improved remarkably thanks to the training and resources we received.”</p>Jame Deo · Tribal Farmer</blockquote>
+        <div class="dots" id="dots"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+<script src="script.js?v=5"></script>
+<script>
+// Animate the skill bars when they scroll into view
+document.querySelectorAll('.bar-fill').forEach(function (b) {
+  if (!('IntersectionObserver' in window)) { b.classList.add('in'); return; }
+  new IntersectionObserver(function (es, o) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); o.unobserve(e.target); } });
+  }, { threshold: 0.4 }).observe(b);
+});
+</script>
+</body>
+</html>
